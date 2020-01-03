@@ -1,0 +1,47 @@
+<!doctype html>
+<html style="width: 100%; height: 100%">
+<head>
+<title>LEEKSPIN</title>
+</head>
+<body style="display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; margin: 0; padding: 0; color: white; background: black; font-family: sans-serif" onload="document.querySelector('audio').play()">
+<img src="loituma.gif" style="display: block; width: 100%; height: auto" onclick="document.querySelector('audio').paused ? document.querySelector('audio').play() : document.querySelector('audio').pause()" />
+<p style="text-align: center">You've been spinning for <span id="timer">0:00:00</span>.</p>
+<audio autoplay loop><source src="loituma.mp3"></audio>
+<script>
+var loadTime = Date.now();
+setInterval(function() {
+	var elapsedMillis = Date.now() - loadTime,
+		elapsedSeconds = Math.round(elapsedMillis / 1000),
+		elapsedFormatted = formatDuration(elapsedSeconds);
+
+	document.getElementById("timer").innerText = elapsedFormatted;
+}, 1000);
+
+function formatDuration(duration){
+	var hours = 0,
+		mins = 0
+		secs = duration;
+	
+	while(secs >= 60){
+		secs -= 60;
+		mins += 1;
+	}
+	
+	if(secs < 10){
+		secs = "0" + secs;
+	}
+	
+	while(mins >= 60){
+		mins -= 60;
+		hours += 1;
+	}
+	
+	if(mins < 10){
+		mins = "0" + mins;
+	}
+	
+	return hours + ":" + mins + ":" + secs;
+}
+</script>
+</body>
+</html>
