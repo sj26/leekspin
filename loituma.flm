@@ -1,0 +1,7 @@
+movie 'loituma.swf' compressed // flash 6, total frames: 76, frame rate: 12 fps, 344x235 px
+
+  frame 5
+    gotoFrame 1
+    play
+  end // of frame 5
+end
