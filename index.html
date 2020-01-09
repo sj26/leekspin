@@ -3,9 +3,10 @@
 <head>
 <title>LEEKSPIN</title>
 </head>
-<body style="display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; margin: 0; padding: 0; color: white; background: black; font-family: sans-serif" onload="document.querySelector('audio').play()">
-<img src="loituma.gif" style="display: block; width: 100%; height: auto" onclick="document.querySelector('audio').paused ? document.querySelector('audio').play() : document.querySelector('audio').pause()" />
-<p style="text-align: center">You've been spinning for <span id="timer">0:00:00</span>.</p>
+<body style="display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; margin: 0; padding: 0; color: white; background: black; font-family: sans-serif" onload="document.querySelector('audio').play().catch(function() { document.getElementById('advice').style.visibility = 'visible'; })">
+<a id="advice" style="display: block; margin: 1em; visibility: hidden; color: grey; text-align: center" href="javascript:document.querySelector('audio').play(),document.getElementById('advice').style.visibility = 'hidden'">Click to play</a>
+<img src="loituma.gif" style="display: block; width: 100%; height: auto" onclick="document.querySelector('audio').play()" />
+<p style="margin: 1em; padding: 0; text-align: center">You've been spinning for <span id="timer">0:00:00</span>.</p>
 <audio autoplay loop><source src="loituma.mp3"></audio>
 <script>
 var loadTime = Date.now();
